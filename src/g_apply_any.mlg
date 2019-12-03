@@ -1,0 +1,21 @@
+DECLARE PLUGIN "apply_any"
+
+{
+
+(* This should not be needed, fix in Coq! *)
+open Ltac_plugin
+
+open Stdarg
+
+}
+
+
+TACTIC EXTEND apply_any
+| [ "apply_any" preident(db) ] ->
+  { Apply_any.the_tactic false db }
+END
+
+TACTIC EXTEND eapply_any
+| [ "eapply_any" preident(db) ] ->
+  { Apply_any.the_tactic true db }
+END

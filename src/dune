@@ -1,22 +1,19 @@
 (library
- (name example_plugin)              ; This is the name you will use in
+ (name apply_any_plugin)            ; This is the name you will use in
                                     ; Coq's `Declare ML Module`, and
                                     ; the name of the main OCaml
                                     ; module of your plugin.
 
- (public_name my-plugin.plugin)     ; This makes the plugin
+ (public_name apply-any.plugin)     ; This makes the plugin
                                     ; installable; recommended, must
                                     ; match opam package name
 
- (synopsis "Coq Template Plugin")   ; Synopsis, used in META generation
+ (synopsis "Coq ApplyAny plugin")   ; Synopsis, used in META generation
 
  (flags :standard -rectypes -w -27) ; Coq requires the `-rectypes`
                                     ; flag; CoqPP generated code
                                     ; requires to disable warning 27
                                     ; often.
-
- (c_names ce_get)                   ; we link our plugin with a C
-                                    ; library! Optional of course.
 
  (libraries                         ; ML Libraries we want to link
                                     ; with, your choice here.
@@ -26,4 +23,4 @@
 ))
 
 ; This will let Dune know about Coq's .mlg grammar files.
-(coq.pp (modules ce_syntax))
+(coq.pp (modules g_apply_any))
